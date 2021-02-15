@@ -1,0 +1,16 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "watch",
+			"path": "medium-laravel-angular-auth-back/",
+			"problemMatcher": [
+				"$tsc"
+			],
+			"group": "build",
+			"label": "npm: watch - medium-laravel-angular-auth-back",
+			"detail": "npm run development -- --watch"
+		}
+	]
+}

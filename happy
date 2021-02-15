@@ -1,0 +1,59 @@
+#!/bin/bash
+
+echo -e "\e[32m
+ HAPPY
+\e[39m"
+
+case "$1" in
+    reset-permissions)
+        LARAVEL_OWNER=arnaud
+        LARAVEL_WS_GROUP=arnaud
+        LARAVEL_ROOT=./server
+        
+        # Adding owner to web server group
+        sudo usermod -a -G ${LARAVEL_WS_GROUP} ${LARAVEL_OWNER}
+
+        # Set files owner/group
+        sudo chown -R ${LARAVEL_OWNER}:${LARAVEL_WS_GROUP} ${LARAVEL_ROOT}
+
+        # Set correct permissions for directories 
+        sudo find ${LARAVEL_ROOT} -type f -exec chmod 644 {} \;
+
+        # Set correct permissions for files 
+        sudo find ${LARAVEL_ROOT} -type d -exec chmod 755 {} \;
+
+        # Set webserver group for storage + cache folders
+        sudo chgrp -R ${LARAVEL_WS_GROUP} ${LARAVEL_ROOT}/storage ${LARAVEL_ROOT}/bootstrap/cache
+
+        # Set correct permissions for storage + cache folders
+        sudo chmod -R ug+rwx ${LARAVEL_ROOT}/storage ${LARAVEL_ROOT}/bootstrap/cache
+
+    ;;
+    start)
+        
+    ;;
+    chown)
+
+    ;;
+    clearcache)
+        echo -e "\e[34mremoving php file in nimble/bootstrap/cache folder..."
+        rm -f nimble/bootstrap/cache/*.php
+        echo -e "\e[32m=> done\e[39m"
+    ;;
+    db)
+        case "$2" in
+            switch)
+             
+            ;;
+            status)
+           ╧════════════════════════════════════╝
+            ;;
+            copy)
+               
+            ;;
+            *)
+                echo "airmes db [switch|status|copy]"
+            ;;
+        esac
+    ;;
+esac
