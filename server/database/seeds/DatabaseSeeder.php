@@ -11,10 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $user = new \App\User();
-        $user->name = 'John DOE';
-        $user->email = 'john.doe@email.com';
-        $user->password = bcrypt('secret');
-        $user->save();
+        $this->call([
+            // UsersSeeder::class,
+            ApiariesSeeder::class,
+            HivesSeeder::class,
+        ]);
     }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Apollo, gql} from 'apollo-angular';
 
 @Component({
   selector: 'app-hives',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Screen1Component implements OnInit {
 
-  constructor() { }
+  apiaries: any[];
+
+  constructor(private apollo: Apollo) { }
 
   ngOnInit() {
+    this.apollo
+    .watchQuery({
+      query: gql`
+        {
+          apiaries{
+              id
+              name
+              hives {
+                  id
+                  name
+              }
+          }
+        }
+      `,
+    })
+    .valueChanges.subscribe((result: any) => {
+        this.apiaries = result.data.apiaries;
+    });
   }
 
 }
