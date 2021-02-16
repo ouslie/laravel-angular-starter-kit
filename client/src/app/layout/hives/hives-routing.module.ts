@@ -1,11 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Screen1Component } from './screen1.component';
+import { ListComponent } from './list.component';
+import { ViewComponent } from './view.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: Screen1Component
+        component: ListComponent
+    },
+    {
+        path: ':id',
+        component: ViewComponent
     }
 ];
 
@@ -13,4 +18,4 @@ const routes: Routes = [
     imports: [RouterModule.forChild(routes)],
     exports: [RouterModule]
 })
-export class Screen1RoutingModule {}
+export class HivesRoutingModule {}

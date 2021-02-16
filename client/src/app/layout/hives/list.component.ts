@@ -1,19 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
 
 @Component({
   selector: 'app-hives',
-  templateUrl: './screen1.component.html',
-  styleUrls: ['./screen1.component.scss']
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.scss']
 })
-export class Screen1Component implements OnInit {
+export class ListComponent implements OnInit {
 
   apiaries: any[];
 
-  constructor(private apollo: Apollo) { }
+  constructor(
+      private Apollo: Apollo,
+      private Router: Router
+    ) { }
 
   ngOnInit() {
-    this.apollo
+    this.Apollo
     .watchQuery({
       query: gql`
         {
@@ -32,5 +36,7 @@ export class Screen1Component implements OnInit {
         this.apiaries = result.data.apiaries;
     });
   }
+
+  view(id) { this.Router.navigate(['/hives/' + id]); }
 
 }
