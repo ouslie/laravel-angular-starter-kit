@@ -34,7 +34,6 @@
     "core-js": "3.6.5",
     "graphql": "^15.0.0",
     "m": "^1.6.0",
-    "ng2-charts": "2.3.0",
     "rxjs": "6.6.3",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.3"
