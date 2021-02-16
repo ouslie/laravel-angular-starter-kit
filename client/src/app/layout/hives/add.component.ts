@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {Apollo, gql} from 'apollo-angular';
 @Component({
-  selector: 'app-hives',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  selector: 'app-hives-add',
+  templateUrl: './add.component.html',
+  styleUrls: ['./add.component.scss']
 })
-export class ListComponent implements OnInit {
+export class AddComponent implements OnInit {
 
   apiaries: any[];
 

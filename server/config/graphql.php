@@ -102,7 +102,8 @@ return [
         'default' => [
             'query' => [
                 \App\GraphQL\Queries\UsersQuery::class,
-                \App\GraphQL\Queries\ApiariesQuery::class
+                \App\GraphQL\Queries\ApiariesQuery::class,
+                \App\GraphQL\Queries\HiveQuery::class
 
                 // 'example_query' => ExampleQuery::class,
             ],

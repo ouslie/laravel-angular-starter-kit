@@ -12,3 +12,5 @@ Route::middleware('auth:api')->get('/token/revoke', function (Request $request) 
         ]);
     return response()->json('DONE');
 });
+
+Route::post('measure','MeasureController@add');

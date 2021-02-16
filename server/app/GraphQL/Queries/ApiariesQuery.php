@@ -21,20 +21,6 @@ class ApiariesQuery extends Query
         return Type::listOf(GraphQL::type('Apiary'));
     }
 
-    public function args(): array
-    {
-        return [
-            'id' => [
-                'name' => 'id',
-                'type' => Type::string()
-            ],
-            'name' => [
-                'name' => 'name',
-                'type' => Type::string()
-            ],
-        ];
-    }
-
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
         return Apiaries::all();

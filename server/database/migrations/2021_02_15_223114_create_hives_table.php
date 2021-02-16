@@ -18,6 +18,7 @@ class CreateHivesTable extends Migration
             $table->string('name',50);
             $table->unsignedBigInteger('apiary_id');
             $table->foreign('apiary_id')->references('id')->on('apiaries')->onDelete('cascade');
+            $table->string('apiKey')->unique()->nullable();
             $table->timestamps();
         });
     }

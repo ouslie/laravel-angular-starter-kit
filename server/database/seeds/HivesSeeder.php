@@ -31,5 +31,11 @@ class HivesSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        DB::table('hives')->insert([
+            'apiary_id' => 3,
+            'name' => 'ruche 23ghfgh',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
     }
 }
