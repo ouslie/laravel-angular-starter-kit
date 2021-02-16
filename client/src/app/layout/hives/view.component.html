@@ -1,43 +1,77 @@
-<!-- <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px"> -->
-    <div fxFlex>
-    <mat-card class="card">
-        <mat-card-header class="header">
-          <div class="subheading-2 title">Title</div>
-          <div class="header-actions">
-            <button mat-icon-button><mat-icon>search</mat-icon></button>
-            <button mat-icon-button><mat-icon>view_module</mat-icon></button>
-            <button mat-icon-button><mat-icon>more_vertical</mat-icon></button>
-          </div>
-        </mat-card-header>
-        <mat-card-content class="content">
-          <!-- Insert content here -->
-        </mat-card-content>
-      </mat-card>
-    </div>
 
-    <div fxFlex>
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+
+    <div fxFlex='66%'>
         <mat-card>
             <mat-card-header>
                 <mat-card-title>
-                    Traitement
+                    Informations
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                <p>
-                    test
-                </p>
+                Nom : {{hive.name}}
             </mat-card-content>
+
         </mat-card>
-    <!-- </div> -->
-
-
-    <!--    <div fxFlex>
-        <app-stat [bgClass]="'warn'" [icon]="'view_list'" [count]="12" [label]="'New task!'"></app-stat>
     </div>
     <div fxFlex>
-        <app-stat [bgClass]="'success'" [icon]="'shopping_cart'" [count]="124" [label]="'New Orders!'"></app-stat>
+        <mat-card style="padding: 0px;">
+            <mat-card-header [style.backgroundColor]="'#7986CB'" class="header">
+                <div class="title">Colonie</div>
+                <div class="header-actions">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="edit()" mat-menu-item>
+                            <mat-icon>edit</mat-icon>
+                            <span>Edition</span>
+                        </button>
+                    </mat-menu>
+                </div>
+            </mat-card-header>
+            <mat-card-content class="content">
+                <form style="padding : 20px;" [formGroup]="ColonyForm" (ngSubmit)="save()">
+                    <div fxLayout="column" fxLayout.lt-md="column" fxFlex fxLayoutGap>
+                        <mat-form-field appearance="fill" >
+                            <mat-label>Naissance de la reine</mat-label>
+                            <input type="date" matInput required  formControlName="birthdate_queen"  >
+                        </mat-form-field>
+                        <div fxLayout="row" fxLayout.lt-md="row" fxFlex fxLayoutGap>
+
+                        <div class="circle" [ngStyle]="{'background': ColonyForm.value.color}"></div>
+                        <mat-form-field fxFlex appearance="fill" >
+                            <input type="color" matInput  formControlName="color" required>
+                        </mat-form-field>
+                        </div>
+
+                    <mat-form-field appearance="fill">
+                        <mat-label>Race</mat-label>
+                        <select matNativeControl required formControlName="type">
+                            <option value="CARNICA">Carnica</option>
+                            <option value="NOIR">Noire</option>
+                        </select>
+                    </mat-form-field>
+
+
+                </div>
+                <div *ngIf="editMode">
+                    <button mat-button type="submit" [disabled]="!ColonyForm.valid">Enregistrer</button>
+                    <button (click)="cancel()" mat-button>Annuler</button>
+                </div>
+                </form>
+
+            </mat-card-content>
+
+        </mat-card>
     </div>
-    <div fxFlex>
-        <app-stat [bgClass]="'info'" [icon]="'contact_support'" [count]="13" [label]="'New Tickets!'"></app-stat>
-    </div> -->
 </div>
+
+<pre>{{hive.colony|json}}</pre>
+{{ColonyForm.value|json}}
+
+<mat-fab-menu id="add-button" color="primary"
+[fabButtons]="fabButtonsRandom"
+direction="left"
+>
+</mat-fab-menu>

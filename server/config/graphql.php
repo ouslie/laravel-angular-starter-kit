@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\GraphQL\Scalars\DateTimeType;
 use example\Mutation\ExampleMutation;
 use example\Query\ExampleQuery;
 use example\Type\ExampleRelationType;
@@ -108,6 +109,8 @@ return [
                 // 'example_query' => ExampleQuery::class,
             ],
             'mutation' => [
+                \App\GraphQL\Mutations\ColonyUpdateMutation::class
+
                 // 'example_mutation'  => ExampleMutation::class,
             ],
             'middleware' => ['auth:api'],
@@ -121,6 +124,8 @@ return [
                 // 'example_query' => ExampleQuery::class,
             ],
             'mutation' => [
+                \App\GraphQL\Mutations\ColonyUpdateMutation::class
+
                 // 'example_mutation'  => ExampleMutation::class,
             ],
             'middleware' => ['auth.basic'],
@@ -143,8 +148,9 @@ return [
         // \Rebing\GraphQL\Support\UploadType::class,
         'User' => \App\GraphQL\Types\UserType::class,
         'Apiary' => \App\GraphQL\Types\ApiaryType::class,
-        'Hive' => \App\GraphQL\Types\HivesType::class
-
+        'Hive' => \App\GraphQL\Types\HivesType::class,
+        'Colony' => \App\GraphQL\Types\ColonyType::class,
+        'DateTime' => DateTimeType::class,
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

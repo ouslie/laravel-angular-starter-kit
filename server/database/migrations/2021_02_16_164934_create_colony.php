@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMesure extends Migration
+class CreateColony extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,17 @@ class CreateMesure extends Migration
      */
     public function up()
     {
-        Schema::create('hives_measure', function (Blueprint $table) {
+        Schema::create('colony', function (Blueprint $table) {
+            $table->id();
+            $table->string('queen');
+            $table->timestamp('birthdate_queen');
+            $table->string('type');
+            $table->string('marqued');
+            $table->timestamp('last_see')->nullable();
+            $table->timestamp('death_date')->nullable();
+            $table->string('death_comment')->nullable();
             $table->foreignId('hive_id');
             $table->foreign('hive_id')->references('id')->on('hives')->onDelete('cascade');
-            $table->string('temperature')->nullable();
-            $table->string('humidity')->nullable();
-            $table->string('weight')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +35,6 @@ class CreateMesure extends Migration
      */
     public function down()
     {
-        Schema::drop('hives_measure');
+        Schema::dropIfExists('colony');
     }
 }

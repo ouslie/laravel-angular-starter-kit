@@ -1,9 +1,9 @@
 <?php
 namespace App\GraphQL\Types;
 
-use App\User;
 use GraphQL\Type\Definition\Type;
 use Rebing\GraphQL\Support\Type as GraphQLType;
+use Rebing\GraphQL\Support\Facades\GraphQL;
 
 class HivesType extends GraphQLType
 {
@@ -24,6 +24,11 @@ class HivesType extends GraphQLType
                 'type' => Type::string(),
                 'description' => 'The email of user',
             ],
+
+            'colony' => [
+                'type'          => GraphQL::type('Colony'),
+                'description'   => 'A list of posts written by the user',
+            ]
         ];
     }
 }

@@ -42,10 +42,16 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 
+import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 
 @NgModule({
     exports: [
+        MatFabMenuModule,
+        FormsModule,
+        ReactiveFormsModule,
         A11yModule,
         CdkStepperModule,
         CdkTableModule,
@@ -88,7 +94,11 @@ import { MatTreeModule } from '@angular/material/tree';
         MatTreeModule,
         PortalModule,
         ScrollingModule,
-    ]
+        NgxMatColorPickerModule
+    ],
+    providers: [
+        { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
+    ],
 })
 export class MaterialModule {
 }

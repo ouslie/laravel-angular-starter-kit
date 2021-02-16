@@ -13,6 +13,8 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/color-picker": "^5.0.2",
+    "@angular-material-extensions/fab-menu": "^3.0.0",
     "@angular/animations": "11.2.0",
     "@angular/cdk": "11.2.0",
     "@angular/common": "11.2.0",
@@ -28,11 +30,13 @@
     "@apollo/client": "^3.0.0",
     "@ngx-translate/core": "12.1.2",
     "@ngx-translate/http-loader": "4.0.0",
+    "@schematics/angular": "^11.2.0",
     "apollo-angular": "^2.2.0",
     "chart.js": "2.9.3",
     "core-js": "3.6.5",
     "graphql": "^15.0.0",
     "m": "^1.6.0",
+    "moment": "^2.29.1",
     "rxjs": "6.6.3",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.3"

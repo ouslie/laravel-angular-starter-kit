@@ -1,11 +1,5 @@
 $header-height: 64px;
 
-.card {
-  padding: 0;
-  margin: -$header-height auto 0;
-  width: 75%;
-}
-
 .header {
   display: flex;
   align-items: center;
@@ -16,10 +10,41 @@ $header-height: 64px;
 
   .title {
     margin-right: auto;
-    font-weight: 400;
+    font-weight: 800;
   }
 }
 
-.content {
-  height: 400px;
-}
+// .content {
+//   height: 400px;
+// }
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+
+  .example-full-width {
+    width: 100%;
+  }
+
+  .circle {
+    $size: 40px;
+    height: $size;
+    width: $size;
+    box-sizing: border-box;
+    border-radius: 100%;
+    cursor: pointer;
+    border: 1px solid #dadada;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.14);
+    margin-right: 25px;
+    margin-top:6px;
+  }
+
+  #add-button{
+
+    right: 20px;
+    bottom: 10px;
+    left: auto;
+    position: absolute;
+  }

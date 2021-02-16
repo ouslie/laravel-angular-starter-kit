@@ -10,4 +10,9 @@ class Hive extends Model
     {
         return $this->hasMany(Measure::class);
     }
+
+    public function colony()
+    {
+      return $this->hasOne(Colony::class, 'hive_id', 'id');
+    }
 }
