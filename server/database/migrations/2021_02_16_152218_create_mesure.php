@@ -14,8 +14,9 @@ class CreateMesure extends Migration
     public function up()
     {
         Schema::create('hives_measure', function (Blueprint $table) {
-            $table->foreignId('hive_id');
-            $table->foreign('hive_id')->references('id')->on('hives')->onDelete('cascade');
+            $table->id();
+            $table->foreignId('colony_id');
+            $table->foreign('colony_id')->references('id')->on('colony')->onDelete('cascade');
             $table->string('temperature')->nullable();
             $table->string('humidity')->nullable();
             $table->string('weight')->nullable();

@@ -18,6 +18,12 @@ query hive($id: Int!) {
             type
             marqued
             last_see
+            last_measures {
+                created_at
+                temperature
+                humidity
+                weight
+            }
         }
   }
 }

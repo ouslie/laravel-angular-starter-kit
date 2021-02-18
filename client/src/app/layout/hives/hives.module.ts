@@ -8,13 +8,17 @@ import { StatModule } from 'src/app/shared/modules/stat/stat.module';
 import { ViewComponent } from './view.component';
 import { WidgetInspectionComponent } from '../components/widget-inspection/widget-inspection.component';
 import { WidgetColonyComponent } from '../components/widget-colony/widget-colony.component';
+import { MeasuresInspectionComponent } from '../components/measures/measures.component';
+import { ChartLineComponent } from '../components/charts/chart-line/chart-line.component';
 
 @NgModule({
     declarations: [
         ListComponent,
         ViewComponent,
         WidgetInspectionComponent,
-        WidgetColonyComponent
+        WidgetColonyComponent,
+        MeasuresInspectionComponent,
+        ChartLineComponent,
     ],
     imports: [
         CommonModule,

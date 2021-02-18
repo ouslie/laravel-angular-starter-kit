@@ -1,6 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { OverlayModule } from '@angular/cdk/overlay';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
@@ -15,7 +15,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { MaterialModule } from './shared/modules/material/material.module';
-import { BarRatingModule } from "ngx-bar-rating";
+import { ChartsModule } from 'ng2-charts';
+import { registerLocaleData } from '@angular/common';
+
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr);
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {
@@ -38,6 +42,7 @@ export const createTranslateLoader = (http: HttpClient) => {
         OverlayModule,
         HttpClientModule,
         MaterialModule,
+        // ChartsModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
@@ -47,7 +52,8 @@ export const createTranslateLoader = (http: HttpClient) => {
         }),
         GraphQLModule
     ],
-    providers: [],
+    providers: [{ provide: LOCALE_ID, useValue: 'fr-FR'},
+],
     bootstrap: [AppComponent]
 })
 export class AppModule {}

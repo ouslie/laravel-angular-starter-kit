@@ -11,5 +11,9 @@ class Colony extends Model
     protected $guarded = ['id'];
 
 
+    public function measures()
+    {
+      return $this->hasMany(Measure::class, 'colony_id', 'id');
+    }
 
 }

@@ -152,6 +152,7 @@ return [
         'Colony' => \App\GraphQL\Types\ColonyType::class,
         'DateTime' => DateTimeType::class,
         'Inspection' => \App\GraphQL\Types\InspectionType::class,
+        'Measure' => \App\GraphQL\Types\MeasureType::class,
         'InspectionInput' => \App\GraphQL\Types\InspectionInputType::class,
         'ColonyInput' => \App\GraphQL\Types\ColonyInputType::class,
 

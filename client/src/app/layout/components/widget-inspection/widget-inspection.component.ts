@@ -28,6 +28,8 @@ export class WidgetInspectionComponent implements OnInit {
     inspections = null;
     displayedColumns = ['date', 'status', 'actions'];
 
+    class= 'hidden';
+
     constructor(private Apollo: Apollo, private Router: Router) { }
 
     ngOnInit() {
@@ -43,6 +45,17 @@ export class WidgetInspectionComponent implements OnInit {
             console.log('there was an error sending the query', error);
         });
     }
+
+    expand() {
+        this.class='fullscreen';
+     //
+    //  this.selectedData=data;
+
+      }
+      close()
+      {
+        this.class='hidden';
+      }
 
 //   view(id) { this.Router.navigate(['/hives/' + id]); }
 

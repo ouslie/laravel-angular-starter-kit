@@ -49,11 +49,21 @@ class ColonyType extends GraphQLType
                 'type' => Type::int(),
                 'description' => 'The hive_id of colony',
             ],
-
-            'hives' => [
-                'type'          => Type::listOf(GraphQL::type('Hive')),
-                'description'   => 'A list of posts written by the user',
+            'measures' => [
+                'type'          => Type::listOf(GraphQL::type('Measure')),
+            ],
+            'last_measures' => [
+                'type'          => GraphQL::type('Measure'),
+                'resolve' => function($root, $args) {
+                    // If you want to resolve the field yourself,
+                    // it can be done here
+                    return $root->measures()->orderBy('created_at','DESC')->first();;
+                }
             ]
+            // 'hives' => [
+            //     'type'          => Type::listOf(GraphQL::type('Hive')),
+            //     'description'   => 'A list of posts written by the user',
+            // ]
         ];
     }
 }

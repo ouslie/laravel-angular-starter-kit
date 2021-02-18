@@ -7,8 +7,38 @@
                 </mat-card-title>
             </mat-card-header>
             <mat-card-content>
-                Nom : {{hive.name}}
-                ID: {{hive.colony.id}}
+                <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+                    <div fxFlex='80%'>
+                        <p>
+                            Nom : {{hive.name}}
+                        </p>
+                    </div>
+                    <div>
+                        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                            <mat-chip>
+                                {{hive.colony.last_measures.created_at | date:'short':'+0200':'fr'}}
+                            </mat-chip>
+                        </mat-chip-list>
+                        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                            <mat-chip>
+                                {{hive.colony.last_measures.temperature}} °C
+                            </mat-chip>
+                        </mat-chip-list>
+                        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                            <mat-chip>
+                                {{hive.colony.last_measures.humidity}} %
+                            </mat-chip>
+                        </mat-chip-list>
+                        <mat-chip-list class="mat-chip-list-stacked" aria-label="Color selection">
+                            <mat-chip>
+                                {{hive.colony.last_measures.weight}} KG
+                            </mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+
+                <!-- ID: {{hive.colony.id}}
+                ID: {{hive.colony.last_measures.created_at | date:'full':'+0200':'fr'}} -->
             </mat-card-content>
         </mat-card>
     </div>
@@ -28,7 +58,10 @@
         <td mat-cell *matCellDef="let product"> {{product.name}} </td>
     </ng-container>
 </table> -->
+<!-- <widget-measures [colony_id]='hive.colony.id'></widget-measures>
+ -->
 
+<app-chart-line></app-chart-line>
 <mat-fab-menu id="add-button" color="primary" [fabButtons]="fabButtonsRandom" direction="left"
     (onFabMenuItemSelected)="selectedAction($event)">
 </mat-fab-menu>

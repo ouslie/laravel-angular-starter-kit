@@ -47,6 +47,8 @@ import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { BarRatingModule } from "ngx-bar-rating";
 
 import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
     exports: [
@@ -97,6 +99,8 @@ import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } fro
         PortalModule,
         ScrollingModule,
         NgxMatColorPickerModule,
+        NgxChartsModule,
+        ChartsModule
     ],
     providers: [
         { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
