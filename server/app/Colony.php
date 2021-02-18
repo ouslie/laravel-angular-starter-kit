@@ -8,4 +8,8 @@ class Colony extends Model
 {
     protected $table    = "colony";
 
+    protected $guarded = ['id'];
+
+
+
 }

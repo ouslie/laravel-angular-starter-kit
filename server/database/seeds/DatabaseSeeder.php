@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             UsersSeeder::class,
             ApiariesSeeder::class,
             HivesSeeder::class,
+            ColonySeeder::class
         ]);
     }
 }

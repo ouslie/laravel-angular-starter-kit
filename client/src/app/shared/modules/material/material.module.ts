@@ -44,11 +44,13 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
+import { BarRatingModule } from "ngx-bar-rating";
 
 import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
 
 @NgModule({
     exports: [
+        BarRatingModule,
         MatFabMenuModule,
         FormsModule,
         ReactiveFormsModule,
@@ -94,7 +96,7 @@ import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } fro
         MatTreeModule,
         PortalModule,
         ScrollingModule,
-        NgxMatColorPickerModule
+        NgxMatColorPickerModule,
     ],
     providers: [
         { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }

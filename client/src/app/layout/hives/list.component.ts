@@ -36,6 +36,6 @@ export class ListComponent implements OnInit {
     });
   }
 
-  view(id) { this.Router.navigate(['/hives/' + id]); }
+  view(id) { this.Router.navigate(['/hive/' + id]); }
 
 }

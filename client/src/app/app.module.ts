@@ -15,6 +15,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { MaterialModule } from './shared/modules/material/material.module';
+import { BarRatingModule } from "ngx-bar-rating";
 
 // AoT requires an exported function for factories
 export const createTranslateLoader = (http: HttpClient) => {

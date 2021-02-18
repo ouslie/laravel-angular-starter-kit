@@ -18,8 +18,12 @@ const routes: Routes = [
                 loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
             },
             {
-                path: 'hives',
+                path: '',
                 loadChildren: () => import('./hives/hives.module').then(m => m.HivesModule)
+            },
+            {
+                path: 'inspection',
+                loadChildren: () => import('./inspection/inspection.module').then(m => m.InspectionModule)
             },
             {
                 path: 'screen2',

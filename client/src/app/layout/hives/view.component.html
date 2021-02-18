@@ -1,6 +1,4 @@
-
 <div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
-
     <div fxFlex='66%'>
         <mat-card>
             <mat-card-header>
@@ -10,68 +8,27 @@
             </mat-card-header>
             <mat-card-content>
                 Nom : {{hive.name}}
+                ID: {{hive.colony.id}}
             </mat-card-content>
-
         </mat-card>
     </div>
     <div fxFlex>
-        <mat-card style="padding: 0px;">
-            <mat-card-header [style.backgroundColor]="'#7986CB'" class="header">
-                <div class="title">Colonie</div>
-                <div class="header-actions">
-                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-                        <mat-icon>more_vert</mat-icon>
-                    </button>
-                    <mat-menu #menu="matMenu">
-                        <button (click)="edit()" mat-menu-item>
-                            <mat-icon>edit</mat-icon>
-                            <span>Edition</span>
-                        </button>
-                    </mat-menu>
-                </div>
-            </mat-card-header>
-            <mat-card-content class="content">
-                <form style="padding : 20px;" [formGroup]="ColonyForm" (ngSubmit)="save()">
-                    <div fxLayout="column" fxLayout.lt-md="column" fxFlex fxLayoutGap>
-                        <mat-form-field appearance="fill" >
-                            <mat-label>Naissance de la reine</mat-label>
-                            <input type="date" matInput required  formControlName="birthdate_queen"  >
-                        </mat-form-field>
-                        <div fxLayout="row" fxLayout.lt-md="row" fxFlex fxLayoutGap>
-
-                        <div class="circle" [ngStyle]="{'background': ColonyForm.value.color}"></div>
-                        <mat-form-field fxFlex appearance="fill" >
-                            <input type="color" matInput  formControlName="color" required>
-                        </mat-form-field>
-                        </div>
-
-                    <mat-form-field appearance="fill">
-                        <mat-label>Race</mat-label>
-                        <select matNativeControl required formControlName="type">
-                            <option value="CARNICA">Carnica</option>
-                            <option value="NOIR">Noire</option>
-                        </select>
-                    </mat-form-field>
-
-
-                </div>
-                <div *ngIf="editMode">
-                    <button mat-button type="submit" [disabled]="!ColonyForm.valid">Enregistrer</button>
-                    <button (click)="cancel()" mat-button>Annuler</button>
-                </div>
-                </form>
-
-            </mat-card-content>
-
-        </mat-card>
+        <widget-colony [colony_id]=hive.colony.id></widget-colony>
     </div>
 </div>
+<div class="mb-20" fxLayout="row" fxLayout.lt-md="column" fxFlex fxLayoutGap="20px">
+    <widget-inspection fxFlex='33%' [colony_id]=hive.colony.id></widget-inspection>
+</div>
 
-<pre>{{hive.colony|json}}</pre>
-{{ColonyForm.value|json}}
+<!-- <table mat-table [dataSource]="fakeProducts" class="mat-elevation-z2">
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Product Name </th>
+        <td mat-cell *matCellDef="let product"> {{product.name}} </td>
+    </ng-container>
+</table> -->
 
-<mat-fab-menu id="add-button" color="primary"
-[fabButtons]="fabButtonsRandom"
-direction="left"
->
+<mat-fab-menu id="add-button" color="primary" [fabButtons]="fabButtonsRandom" direction="left"
+    (onFabMenuItemSelected)="selectedAction($event)">
 </mat-fab-menu>

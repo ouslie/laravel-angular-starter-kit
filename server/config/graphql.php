@@ -8,6 +8,22 @@ use example\Query\ExampleQuery;
 use example\Type\ExampleRelationType;
 use example\Type\ExampleType;
 
+CONST QUERY = [
+    \App\GraphQL\Queries\UsersQuery::class,
+    \App\GraphQL\Queries\ApiariesQuery::class,
+    \App\GraphQL\Queries\HiveQuery::class,
+    \App\GraphQL\Queries\InspectionQuery::class,
+    \App\GraphQL\Queries\InspectionsQuery::class,
+    \App\GraphQL\Queries\ColonyQuery::class
+];
+
+CONST MUTATION = [
+    \App\GraphQL\Mutations\ColonyUpdateMutation::class,
+    \App\GraphQL\Mutations\InspectionCreateMutation::class,
+    \App\GraphQL\Mutations\InspectionUpdateMutation::class
+
+];
+
 return [
 
     // The prefix for routes
@@ -99,37 +115,21 @@ return [
     //      ],
     //  ]
     //
+
+
+
     'schemas' => [
         'default' => [
-            'query' => [
-                \App\GraphQL\Queries\UsersQuery::class,
-                \App\GraphQL\Queries\ApiariesQuery::class,
-                \App\GraphQL\Queries\HiveQuery::class
-
-                // 'example_query' => ExampleQuery::class,
-            ],
-            'mutation' => [
-                \App\GraphQL\Mutations\ColonyUpdateMutation::class
-
-                // 'example_mutation'  => ExampleMutation::class,
-            ],
+            'query'      => QUERY,
+            'mutation'   => MUTATION,
             'middleware' => ['auth:api'],
-            'method' => ['get', 'post'],
+            'method'     => ['get', 'post'],
         ],
         'tutu' => [
-            'query' => [
-                \App\GraphQL\Queries\UsersQuery::class,
-                \App\GraphQL\Queries\ApiariesQuery::class
-
-                // 'example_query' => ExampleQuery::class,
-            ],
-            'mutation' => [
-                \App\GraphQL\Mutations\ColonyUpdateMutation::class
-
-                // 'example_mutation'  => ExampleMutation::class,
-            ],
+            'query'      => QUERY,
+            'mutation'   => MUTATION,
             'middleware' => ['auth.basic'],
-            'method' => ['get', 'post'],
+            'method'     => ['get', 'post'],
         ],
     ],
 
@@ -151,6 +151,10 @@ return [
         'Hive' => \App\GraphQL\Types\HivesType::class,
         'Colony' => \App\GraphQL\Types\ColonyType::class,
         'DateTime' => DateTimeType::class,
+        'Inspection' => \App\GraphQL\Types\InspectionType::class,
+        'InspectionInput' => \App\GraphQL\Types\InspectionInputType::class,
+        'ColonyInput' => \App\GraphQL\Types\ColonyInputType::class,
+
     ],
 
     // The types will be loaded on demand. Default is to load all types on each request

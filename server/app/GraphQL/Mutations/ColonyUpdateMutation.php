@@ -22,23 +22,22 @@ class ColonyUpdateMutation extends Mutation
     public function args(): array
     {
         return [
-            'id' => ['name' => 'id', 'type' => Type::nonNull(Type::int())],
-            'marqued' => ['name' => 'marqued', 'type' => Type::string()],
-            'type' => ['name' => 'type', 'type' => Type::string()],
+            'id' => [
+                'name' => 'id',
+                'type' => Type::nonNull(Type::int())
+            ],
+            'colony' => [
+                'name' => 'colony',
+                'type' => GraphQL::type('ColonyInput')
+            ],
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $resolveInfo, Closure $getSelectFields)
     {
 
-        $colony = Colony::find($args['id']);
-
-        if(!$colony) {
-            return null;
-        }
-        if(isset($args['marqued'])) $colony->marqued = $args['marqued'];
-        if(isset($args['type'])) $colony->type = $args['type'];
-
+        $colony = Colony::findOrFail($args['id']);
+        $colony->fill($args['colony']);
 
         $colony->save();
 

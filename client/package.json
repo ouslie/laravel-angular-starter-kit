@@ -37,6 +37,7 @@
     "graphql": "^15.0.0",
     "m": "^1.6.0",
     "moment": "^2.29.1",
+    "ngx-bar-rating": "^2.0.0",
     "rxjs": "6.6.3",
     "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.3"

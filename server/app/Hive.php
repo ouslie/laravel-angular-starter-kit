@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Hive extends Model
 {
@@ -11,8 +12,8 @@ class Hive extends Model
         return $this->hasMany(Measure::class);
     }
 
-    public function colony()
+    public function colony() :BelongsTo
     {
-      return $this->hasOne(Colony::class, 'hive_id', 'id');
+      return $this->belongsTo(Colony::class, 'colony_id', 'id');
     }
 }

@@ -6,17 +6,17 @@ import { ViewComponent } from './view.component';
 
 const routes: Routes = [
     {
-        path: '',
+        path: 'hives',
         component: ListComponent
     },
     {
-        path: ':id',
+        path: 'hive/:id',
         component: ViewComponent
     },
-    {
-        path: ':add',
-        component: AddComponent
-    }
+    // {
+    //     path: ':add',
+    //     component: AddComponent
+    // }
 ];
 
 @NgModule({

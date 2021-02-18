@@ -8,7 +8,6 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { LayoutComponent } from './layout.component';
 import { NavComponent } from './nav/nav.component';
 import { Screen2Component } from './screen2/screen2.component';
-
 @NgModule({
     imports: [
         CommonModule,
@@ -21,7 +20,7 @@ import { Screen2Component } from './screen2/screen2.component';
         LayoutComponent,
         NavComponent,
         TopnavComponent,
-        SidebarComponent
+        SidebarComponent,
     ]
 
 })

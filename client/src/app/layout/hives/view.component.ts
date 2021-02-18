@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Apollo, gql} from 'apollo-angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import moment from "moment";
 import { FormBuilder } from '@angular/forms';
@@ -46,7 +46,7 @@ export class ViewComponent implements OnInit {
     fabButtonsRandom: MatFabMenu[] = [
         {
           id: 1,
-          icon: 'create'
+          icon: 'create',
         },
         {
           id: 2,
@@ -64,15 +64,25 @@ export class ViewComponent implements OnInit {
   constructor(
       private apollo: Apollo,
       private route: ActivatedRoute,
-      private fb: FormBuilder
+      private Router: Router
       ) { }
 
-      ColonyForm = this.fb.group({
-        color: ['', Validators.required],
-        birthdate_queen: ['', Validators.required],
-        type:  ['', Validators.required]
-      } );
 
+
+      displayedColumns = ['name'];
+
+      fakeProducts = [
+        {name: 'Hydrogen'},
+        // {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
+        // {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
+        // {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
+        // {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+        // {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
+        // {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
+        // {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
+        // {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
+        // {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
+      ];
   ngOnInit() {
     this.route.params.subscribe(params => this.hive_id = parseInt(params.id));
     this.load();
@@ -87,43 +97,15 @@ export class ViewComponent implements OnInit {
     })
     .valueChanges.subscribe((result: any) => {
         this.hive = result.data.hive;
-        this.initForm();
-
     });
   }
 
-  initForm() {
-    this.ColonyForm.patchValue({
-        birthdate_queen: moment(this.hive.colony.birthdate_queen).format('YYYY-MM-DD'),
-        type: this.hive.colony.type,
-        color: this.hive.colony.marqued
-    });
-    this.ColonyForm.disable();
+
+  selectedAction(event) {
+      if(event = 1 ){
+          this.Router.navigate(['/inspection/add/' + this.hive_id]);
+      }
   }
 
-  edit() {
-      this.editMode = true;
-      this.ColonyForm.enable();
-  }
-  cancel() {
-    this.editMode = false;
-    this.initForm();
-  }
-
-  save() {
-      this.apollo.mutate({
-            mutation: UPDATE_COLONY,
-            variables: {
-                id: parseInt(this.hive.colony.id),
-                type: this.ColonyForm.value.type,
-                marqued: this.ColonyForm.value.color,
-            }
-        }).subscribe(({ data }) => {
-            this.editMode = false;
-            this.ColonyForm.disable();
-        },(error) => {
-            console.log('there was an error sending the query', error);
-        });
-  }
 
 }

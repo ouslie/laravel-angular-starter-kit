@@ -20,10 +20,9 @@ class CreateColony extends Migration
             $table->string('type');
             $table->string('marqued');
             $table->timestamp('last_see')->nullable();
-            $table->timestamp('death_date')->nullable();
             $table->string('death_comment')->nullable();
-            $table->foreignId('hive_id');
-            $table->foreign('hive_id')->references('id')->on('hives')->onDelete('cascade');
+            $table->integer('last_hive_id')->nullable();
+            $table->timestamp('death_date')->nullable();
             $table->timestamps();
         });
     }
